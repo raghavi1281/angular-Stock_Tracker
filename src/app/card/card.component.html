@@ -1,0 +1,15 @@
+<div *ngFor="let data of quoteData" style="border: 2px solid black;">
+        <p>{{data.name}}</p>
+        <p>{{data.symbol}}</p>
+        <p>{{data.quote.c}}</p>
+        <p>{{data.quote.dp}}</p>
+        <p>{{data.quote.h}}</p>
+        <p>{{data.quote.o}}</p>
+        <div *ngIf="data.quote.dp>0" style="color: green;">🡱</div>
+        <div *ngIf="data.quote.dp<0" style="color: red;">🡳</div>
+        <a [routerLink]="['../sentiment', data.symbol]" [attr.id]="'sentiment'+data.symbol">Sentiment of {{data.name}}</a>
+        <button [attr.id]="'remove'+data.symbol" (click)="removeData(data.symbol)">
+                &times;
+        </button>
+</div>
+
