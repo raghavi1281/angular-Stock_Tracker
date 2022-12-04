@@ -16,19 +16,14 @@ export class StorageService {
 
   constructor(private _apiservice: FinnhubapiService) { }
 
-  loadValues(){
-    let values = localStorage.getItem('name');
-    let symbols: string[] = values?JSON.parse(values):[];
-    for(let symbol of symbols)
-    {
+  loadValues(symbol: string){
       this._apiservice.getQuoteData(symbol).subscribe(data=>{
         this._apiservice.getStockName(symbol).subscribe(result=>{
           this.mapQuoteData(data, result, symbol);
+          this.data.next('start');
         })
       });
-    }
-    let time:number = symbols.length * 1500;
-    setTimeout(() => this.data.next('start'), time)
+    
   }
 
   storeStockDetails(stockSymbol: string){

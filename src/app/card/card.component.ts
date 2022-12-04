@@ -16,7 +16,11 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.stockValues = JSON.parse(localStorage.getItem('name')!);
-    this._storageservice.loadValues();
+    for(let symbol of this.stockValues)
+    {
+      this._storageservice.loadValues(symbol);
+    }
+    
 
     this._storageservice.data.subscribe(
       name => {
@@ -31,7 +35,8 @@ export class CardComponent implements OnInit {
   getValues(){
     for(let sym of this.stockValues)
     {
-      this.quoteData.push(this._storageservice.getValues(sym));
+      if(this._storageservice.getValues(sym))
+        this.quoteData.push(this._storageservice.getValues(sym));
     }
   }
 

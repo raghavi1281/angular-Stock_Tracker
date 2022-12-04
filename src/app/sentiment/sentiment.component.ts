@@ -29,8 +29,12 @@ export class SentimentComponent implements OnInit {
       this.sentimentInfo = data;
       if(this.sentimentInfo.length<3)
       {
-        let i = this.sentimentInfo[this.sentimentInfo.length -1].month;
-          this.blankmonths.push(i+1);
+        if(!this.sentimentInfo.find(r=>r.month == 9))
+          this.blankmonths.push(9);
+        if(!this.sentimentInfo.find(r=>r.month == 10))
+          this.blankmonths.push(10);
+        if(!this.sentimentInfo.find(r=>r.month == 11))
+          this.blankmonths.push(11);
       } 
     });
     
