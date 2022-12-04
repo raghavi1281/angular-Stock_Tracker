@@ -16,10 +16,14 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.stockValues = JSON.parse(localStorage.getItem('name')!);
-    for(let symbol of this.stockValues)
+    if(this.stockValues)
     {
-      this._storageservice.loadValues(symbol);
-    }
+      for(let symbol of this.stockValues)
+      {
+        this._storageservice.loadValues(symbol);
+      }
+    } 
+    
     
 
     this._storageservice.data.subscribe(
