@@ -1,12 +1,12 @@
 export interface IStockData{
-    c: Number,
-    d: Number,
-    dp:Number,
-    h: Number,
-    l: Number,
-    o: Number,
-    pc:Number,
-    t: Number
+    c: number,
+    d: number,
+    dp:number,
+    h: number,
+    l: number,
+    o: number,
+    pc:number,
+    t: number
 }
 
 export interface IQuoteData{

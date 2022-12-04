@@ -1,7 +1,7 @@
 export interface ISentiment{
-    month: Number;
-    change: Number;
-    mspr: Number;
+    month: number;
+    change: number;
+    mspr: number;
 }
 
 export interface ISentimentResponse{

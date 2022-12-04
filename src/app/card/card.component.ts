@@ -6,7 +6,7 @@ import { IQuoteData } from '../Interfaces/IStockData';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  styles: []
 })
 export class CardComponent implements OnInit {
   stockValues!: string[];

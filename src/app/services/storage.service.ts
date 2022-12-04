@@ -10,6 +10,7 @@ import { ISearchresult } from '../Interfaces/ISearch';
 export class StorageService {
 
   quoteData: Map<string, IQuoteData> = new Map;
+  symbolNames: Map<string, string> = new Map;
   
   data: Subject<string>= new Subject();
 
@@ -58,7 +59,8 @@ export class StorageService {
     {
       this.quoteData.set(symbol, {name: name, 
                                         symbol: symbol, 
-                                        quote:data})
+                                        quote:data});
+      this.symbolNames.set(symbol, name);
     }
   }
   getValues(symbol: string): IQuoteData

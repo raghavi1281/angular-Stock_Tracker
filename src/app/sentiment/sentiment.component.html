@@ -1,7 +1,37 @@
-<p>{{stockSymbol}}</p>
-<div *ngFor="let info of sentimentInfo">
-    {{info.month}} <br>
-    {{info.change}} <br>
-    {{info.mspr}}
+<button routerLink="" id="backBtn" class="btn btn-secondary rounded-pill m-3"> ❮ Back to list of stocks</button>
+<div class="row text-center">
+    <h2>{{stockName}}<span class="h6 badge bg-secondary mx-2">{{stockSymbol}}</span></h2>
+
 </div>
-<button routerLink="">Back</button>
+
+<div class="row justify-content-center">
+    <ul class="col-3 list-group" *ngFor="let info of sentimentInfo">
+        <li class="h2 list-group-item d-flex justify-content-between align-items-center">
+            {{info.month | month}}
+            <span *ngIf="info.change>0" class="h3" style="color: green;">🡱</span>
+            <span *ngIf="info.change<0" class="h3" style="color: red;">🡳</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Change:
+          <span class="badge bg-primary rounded-pill">{{info.change}}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          MSPR:
+          <span class="badge bg-primary rounded-pill">{{info.mspr}}</span>
+        </li><br>
+      </ul>
+      <ul class="col-3 list-group" *ngFor="let b of blankmonths">
+        <li class="h2 list-group-item d-flex justify-content-between align-items-center">
+            {{b | month}}
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Change:
+          <span class="badge bg-secondary rounded-pill">--</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          MSPR:
+          <span class="badge bg-secondary rounded-pill">--</span>
+        </li>
+      </ul>
+</div>
+

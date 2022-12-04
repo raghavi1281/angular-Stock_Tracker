@@ -1,13 +1,6 @@
-<div class="col">
-    <form #trackerForm="ngForm" (ngSubmit)="saveData()"> 
-      <input type="text" id="stockInput" name="stockName" [(ngModel)] = "data" #name="ngModel" (ngModelChange)="data = $event.toUpperCase()" required minlength="1" maxlength="5">
-      <div *ngIf="name.invalid && (name.touched || name.dirty)" class="invalid-feedback">
-        <div *ngIf="name.errors?.['required']">Stock Name is required</div>
-        <div *ngIf="name.errors?.['minlength']">Name must be at least 1 characters</div>
-        <div *ngIf="name.errors?.['maxlength']">Name must be at most 5 characters</div>
-    </div>
-      <button type="submit" id="trackBtn" [disabled]="!trackerForm.valid">Track</button>
-    </form>
-  </div>
+<form #trackerForm="ngForm" (ngSubmit)="saveData()" class="col m-3"> 
+  <input type="text" id="stockInput" name="stockName" [(ngModel)] = "data" #name="ngModel" (ngModelChange)="data = $event.toUpperCase()" required minlength="1" maxlength="5" placeholder="(eg: TSLA, AAPL, GOOGL)">
+  <button class="btn btn-sm btn-primary mx-2" type="submit" id="trackBtn" [disabled]="!trackerForm.valid">Track</button>
+</form>
   
-  <app-card></app-card>
+<app-card></app-card>

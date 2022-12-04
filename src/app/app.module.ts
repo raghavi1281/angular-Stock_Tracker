@@ -12,13 +12,15 @@ import { HomeComponent } from './home/home.component';
 import { StorageService } from './services/storage.service';
 import { FinnhubapiService } from './services/finnhubapi.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MonthPipe } from './month.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
     SentimentComponent,
-    HomeComponent
+    HomeComponent,
+    MonthPipe
   ],
   imports: [
     BrowserModule,
