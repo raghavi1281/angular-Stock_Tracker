@@ -48,15 +48,12 @@ export class StorageService {
     });   
   }
 
-  mapQuoteData(data: IStockData, result: ISearchresult[], symbol: string){
-    let name = result.find(r=>r.displaySymbol==symbol)?.description;
-    if(name)
-    {
-      this.quoteData.set(symbol, {name: name, 
+  mapQuoteData(data: IStockData, result: string, symbol: string){
+      this.quoteData.set(symbol, {name: result, 
                                         symbol: symbol, 
                                         quote:data});
-      this.symbolNames.set(symbol, name);
-    }
+      this.symbolNames.set(symbol,result);
+    
   }
   getValues(symbol: string): IQuoteData
   {

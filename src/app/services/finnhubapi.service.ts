@@ -4,9 +4,11 @@ import { map, Observable } from 'rxjs';
 import { ISentiment,ISentimentResponse } from '../Interfaces/ISentiment';
 import { ISearchResponse, ISearchresult } from '../Interfaces/ISearch';
 import { IStockData } from '../Interfaces/IStockData';
+//import {DatePipe} from '@angular/common'
 
 @Injectable({
   providedIn: 'root'
+
 })
 export class FinnhubapiService {
 
@@ -18,13 +20,17 @@ export class FinnhubapiService {
     return this.httpclient.get<IStockData>(`https://finnhub.io/api/v1/quote?symbol=${stockSymbol}&token=${this.apikey}`);
   }  
 
-  getStockName(stockSymbol: string): Observable<ISearchresult[]>{
+  getStockName(stockSymbol: string): Observable<string>{
     return this.httpclient.get<ISearchResponse>(`https://finnhub.io/api/v1/search?q=${stockSymbol}&token=${this.apikey}`)
-    .pipe(map(data => data.result));
+    .pipe(map(data => 
+      data.result.find(r=>r.displaySymbol==stockSymbol).description
+      
+      ));
   }
 
-  getSentiment(stockSymbol: string): Observable<ISentiment[]>{
-    return this.httpclient.get<ISentimentResponse>(`https://finnhub.io/api/v1/stock/insider-sentiment?symbol=${stockSymbol}&from=2022-09-01&to=2022-12-02&token=${this.apikey}`)
+  getSentiment(stockSymbol: string, fromDate: string, toDate: string): Observable<ISentiment[]>{
+
+    return this.httpclient.get<ISentimentResponse>(`https://finnhub.io/api/v1/stock/insider-sentiment?symbol=${stockSymbol}&from=${fromDate}&to=${toDate}&token=${this.apikey}`)
     .pipe(map(data=>data['data']));
   }
 
