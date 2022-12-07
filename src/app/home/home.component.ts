@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, NgModel } from '@angular/forms'
 import { StorageService } from '../services/storage.service';
 
 @Component({
@@ -9,7 +8,6 @@ import { StorageService } from '../services/storage.service';
 })
 export class HomeComponent implements OnInit{
   data!: string;
-
   constructor(private _storageservice: StorageService){}
 
   ngOnInit(){ }

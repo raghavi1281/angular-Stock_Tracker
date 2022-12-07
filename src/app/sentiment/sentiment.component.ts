@@ -45,11 +45,11 @@ export class SentimentComponent implements OnInit {
       {
         let month = date.getMonth()+1;
         if(!this.sentimentInfo.find(r=>r.month == month))
-          this.blankmonths.push(9);
+          this.blankmonths.push(month);
         if(!this.sentimentInfo.find(r=>r.month == month+1))
-          this.blankmonths.push(10);
+          this.blankmonths.push(month+1);
         if(!this.sentimentInfo.find(r=>r.month == month+2))
-          this.blankmonths.push(11);
+          this.blankmonths.push(month+2);
       }
     });
     

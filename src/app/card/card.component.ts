@@ -23,8 +23,6 @@ export class CardComponent implements OnInit {
         this._storageservice.loadValues(symbol);
       }
     } 
-    
-    
 
     this._storageservice.data.subscribe(
       name => {
